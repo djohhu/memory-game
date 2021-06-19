@@ -7,13 +7,15 @@ div(:class="$style.wrapper")
     div(:class="[$style.row, $style.top]")
       div(:class="$style.item") Дата
       div(:class="$style.item") Время
-    div(
-      v-for="(item, index) in getResults"
-      :class="$style.row"
-      :key="index"
-    )
-      div(:class="$style.item" v-html="item.date")
-      div(:class="$style.item" v-html="item.time")
+    template(v-if="getResults.length")
+      div(
+        v-for="(item, index) in getResults"
+        :class="$style.row"
+        :key="index"
+      )
+        div(:class="$style.item" v-html="item.date")
+        div(:class="$style.item" v-html="item.time")
+    div(v-else, :class="$style.empty") Результатов нет
   Button(:class="$style.button" @click.native="clickOnButton")
 </template>
 
@@ -66,6 +68,10 @@ export default {
 .item
   flex 0 0 50%
   padding 10px
+.empty
+  padding 20px
+  text-align center
+  font-weight 700
 .button
   margin 20px auto 0
   max-width 360px
