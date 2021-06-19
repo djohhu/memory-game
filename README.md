@@ -1,5 +1,9 @@
 # Memory game
 
+## Demo
+
+[Demo link](https://memory-game.fomkin.site)
+
 ## Project setup
 ```
 npm install
